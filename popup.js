@@ -10,15 +10,15 @@ chrome.storage.sync.get('color', ({ color }) => {
 changeColor.addEventListener('click', async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: zaraConvertPrices,
     });
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: duttiConvertPrices,
     });
-    await chrome.scripting.executeScript({
+    chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: marellaConvertPrices,
     });
